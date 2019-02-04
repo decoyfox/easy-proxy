@@ -19,8 +19,8 @@ var task = function(win, info, settings, no, callback) {
             sender.send('updateMonitor', {
                 no: no,
                 msg: 'Cancelled',
-                username: info.username,
-                password: info.password,
+                username: 'max',
+                password: '123',
                 ip: 'n/a',
                 error: true
             });
@@ -31,8 +31,8 @@ var task = function(win, info, settings, no, callback) {
     sender.send('updateMonitor', {
         no: no,
         msg: 'Started',
-        username: info.username,
-        password: info.password,
+        username: 'max',
+        password: '123',
         ip: 'n/a',
         error: false
     });
@@ -44,8 +44,8 @@ var task = function(win, info, settings, no, callback) {
         sender.send('updateMonitor', {
             no: no,
             msg: `Creating Droplet`,
-            username: info.username,
-            password: info.password,
+            username: 'max',
+            password: '123',
             ip: 'n/a',
             error: false
         });
@@ -63,8 +63,8 @@ var task = function(win, info, settings, no, callback) {
               '#!/bin/bash \n' +
               'yum install squid wget httpd-tools -y &&' +
               'touch /etc/squid/passwd &&' +
-              `htpasswd -b /etc/squid/passwd ${info.username} ${info.password} &&` +
-              'wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/dzt/easy-proxy/master/confg/userpass/squid.conf --no-check-certificate &&' +
+              `htpasswd -b /etc/squid/passwd ${'max'} ${'123'} &&` +
+              'wget -O /etc/squid/squid.conf https://raw.githubusercontent.com/decoyfox/easy-proxy/master/confg/userpass/squid.conf --no-check-certificate &&' +
               'touch /etc/squid/blacklist.acl &&' +
               'systemctl restart squid.service && systemctl enable squid.service &&' +
               'iptables -I INPUT -p tcp --dport 3128 -j ACCEPT &&' +
@@ -99,8 +99,8 @@ var task = function(win, info, settings, no, callback) {
                 sender.send('updateMonitor', {
                     no: no,
                     msg: 'An error occured while trying to create your droplet.',
-                    username: info.username,
-                    password: info.password,
+                    username: 'max',
+                    password: '123',
                     ip: 'n/a',
                     error: true
                 });
@@ -156,14 +156,14 @@ var task = function(win, info, settings, no, callback) {
                         sender.send('updateMonitor', {
                             no: no,
                             msg: `Droplet Created`,
-                            username: info.username,
-                            password: info.password,
+                            username: 'max',
+                            password: '123',
                             ip: host,
                             error: false
                         });
                     }
 
-                        console.log("http://" + info.username + ":" + info.password + "@" + host + ":" + '3128')
+                        console.log(host + ":" + '3128' + ":max:123")
 
 
                         var count = 119;
@@ -173,8 +173,8 @@ var task = function(win, info, settings, no, callback) {
                             sender.send('updateMonitor', {
                                 no: no,
                                 msg: `Testing Proxy in ${count}s`,
-                                username: info.username,
-                                password: info.password,
+                                username: 'max',
+                                password: '123',
                                 ip: host,
                                 error: false
                             });
@@ -188,7 +188,7 @@ var task = function(win, info, settings, no, callback) {
                             request({
                                 method: 'get',
                                 url: 'https://google.com/',
-                                proxy: "http://" + info.username + ":" + info.password + "@" + host + ":" + '3128',
+                                proxy: "http://" + "max" + ":" + "123" + "@" + host + ":" + '3128',
                                 gzip: true,
                                 headers: {
                                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3107.4 Safari/537.36'
@@ -200,8 +200,8 @@ var task = function(win, info, settings, no, callback) {
                                     sender.send('updateMonitor', {
                                         no: no,
                                         msg: `Proxy Invalid, destroying droplet.`,
-                                        username: info.username,
-                                        password: info.password,
+                                        username: 'max',
+                                        password: '123',
                                         ip: host,
                                         error: true
                                     });
@@ -211,8 +211,8 @@ var task = function(win, info, settings, no, callback) {
                                             sender.send('updateMonitor', {
                                                 no: no,
                                                 msg: `Error Occured while destroying droplet due to bad proxy Connection.`,
-                                                username: info.username,
-                                                password: info.password,
+                                                username: 'max',
+                                                password: '123',
                                                 ip: host,
                                                 error: true
                                             });
@@ -222,8 +222,8 @@ var task = function(win, info, settings, no, callback) {
                                         sender.send('updateMonitor', {
                                             no: no,
                                             msg: `Droplet Destroyed due to bad proxy connection.`,
-                                            username: info.username,
-                                            password: info.password,
+                                            username: 'max',
+                                            password: '123',
                                             ip: host,
                                             error: true
                                         });
@@ -236,8 +236,8 @@ var task = function(win, info, settings, no, callback) {
                                     sender.send('updateMonitor', {
                                         no: no,
                                         msg: `Created!`,
-                                        username: info.username,
-                                        password: info.password,
+                                        username: 'max',
+                                        password: '123',
                                         ip: host,
                                         error: false
                                     });
