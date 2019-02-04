@@ -50,8 +50,10 @@ var task = function(win, info, settings, no, callback) {
             error: false
         });
 
-        var dropletName = randomstring.generate(14) + '-ep';
+        //var dropletName = randomstring.generate(14) + '-ep';
 
+        var dropletName = "max-server-" + randomstring.generate(4);
+        
         var dropletData = {
             name: dropletName,
             region: info.region,
